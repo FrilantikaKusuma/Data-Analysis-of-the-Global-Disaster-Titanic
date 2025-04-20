@@ -22,6 +22,34 @@ A statistics summary gives information about the data in a sample. It can help u
 - Mean ~50% (Median) in AGE is somewhat symmetrical distribution
 - Survived column is boolean/binary column since the values is 1 or 0, no need to conclude its simmetricity. Only need to check balance level
 
+# Cleaning Data
+
+In this methode there is 2 ways for cleaning the datas:
+- Duplicates Handling by : df = df.drop_duplicates()
+- Missing Values Handling by : df.isna().sum()
+        - The percentage of missing values below 20% so we handle numerically with median, categorical with mode :
+          # if the column is objects use mode,
+        df[column].fillna(df[column].mode()[0], inplace=True)
+    else: # if the data is numericals and objects, there is no other type, used the methode below:
+          # if the column is numericals user median,
+        df[column].fillna(df[column].median(), inplace=True)
+
+
+  # Result
+  If the results is:
+Index: 499 entries, 0 to 499
+Data columns (total 4 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   survived  499 non-null    int64  
+ 1   name      499 non-null    object 
+ 2   sex       499 non-null    object 
+ 3   age       499 non-null    float64
+dtypes: float64(1), int64(1), object(2)
+memory usage: 19.5+ KB
+
+the cleaning data is done. 
+
 
 
 
